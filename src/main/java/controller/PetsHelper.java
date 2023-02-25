@@ -34,4 +34,34 @@ static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("
 		System.out.println(allPets.size() + " pets have been found.");
 		return allPets;
 	}
+
+	/**
+	 * @param tempId
+	 * @return
+	 */
+	public Pets searchPetByID(Integer petId) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		Pets pet = em.find(Pets.class, petId);
+		em.close();
+		System.out.println(pet.getName() + " has been found.");
+		return pet;
+	}
+
+	/**
+	 * @param petToDelete
+	 */
+	public void deletePet(Pets petToDelete) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+
+		if (!em.contains(petToDelete)) {
+			petToDelete = em.merge(petToDelete);
+		}
+		
+		em.remove(petToDelete);
+		em.getTransaction().commit();
+		em.close();
+		System.out.println(petToDelete.getName() + " has been deleted.");
+	}
 }

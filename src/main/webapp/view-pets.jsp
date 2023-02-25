@@ -13,17 +13,17 @@
 		<table>
 			<c:forEach items="${requestScope.allPets}" var="currentpet">
 				<tr>
-					<td><input type="radio" name="id" value="${currentpet.petId}"></td>
-					<td size="20">${currentpet.name} | </td>
+					<td><input type="radio" name="petId" value="${currentpet.petId}"></td>
+					<td>${currentpet.name} | </td>
 					<td>${currentpet.birthday} | </td>
 					<td>${currentpet.weight} | </td>
 					<td>${currentpet.gender} | </td>
 				</tr>
 			</c:forEach>
 		</table>
-		<input type="submit" value="Edit" name="doThisToGame">
-		<input type="submit" value="Delete" name="doThisToGame">
-		<input type="submit" value="Add" name="doThisToGame">
+		<input type="submit" value="Edit" name="doThisToPets">
+		<input type="submit" value="Delete" name="doThisToPets">
+		<input type="submit" value="Add" name="doThisToPets">
 		<br/>
 	</form>
 </body>
