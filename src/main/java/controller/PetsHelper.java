@@ -64,4 +64,16 @@ static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("
 		em.close();
 		System.out.println(petToDelete.getName() + " has been deleted.");
 	}
+
+	/**
+	 * @param petToUpdate
+	 */
+	public void updatePet(Pets petToUpdate) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		em.merge(petToUpdate);
+		em.getTransaction().commit();
+		em.close();
+		System.out.println(petToUpdate.getName() + " has been updated.");
+	}
 }

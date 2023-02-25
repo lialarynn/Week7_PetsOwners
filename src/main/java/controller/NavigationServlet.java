@@ -56,42 +56,18 @@ public class NavigationServlet extends HttpServlet {
 				System.out.println("Forgot to select Pet");
 			}
 		} else if (act.equals("Edit")) {
-			
+			try {
+				Integer tempId = Integer.parseInt(request.getParameter("petId"));
+				Pets petToEdit = ph.searchPetByID(tempId);
+				request.setAttribute("petToEdit", petToEdit);
+				path = "/edit-pet.jsp";
+			} catch (NumberFormatException e) {
+				System.out.println("Forgot to select Pet");
+			}
 		}
 		
 		// directs traffic
 		getServletContext().getRequestDispatcher(path).forward(request, response);
-		
-		/*
-		 * 
-		GamesHelper dao = new GamesHelper();
-		String act = request.getParameter("doThisToGame");
-		
-		//default to viewAllGames servlet unless to add or edit
-		String path = "/viewAllGamesServlet";
-		
-		if(act.equals("Delete")) {
-			try {
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				Games gameToDelete = dao.searchGameByID(tempId);
-				dao.deleteGame(gameToDelete);
-			} catch (NumberFormatException e) {
-				System.out.println("Forgot to select an game");
-			}
-		} else if (act.equals("Edit")) {
-			try {
-				Integer tempID = Integer.parseInt(request.getParameter("id"));
-				Games gameToEdit = dao.searchGameByID(tempID);
-				request.setAttribute("gameToEdit", gameToEdit);
-				path = "/edit-game.jsp";
-			} catch (NumberFormatException e) {
-				System.out.println("Forgot to select an game");
-			}
-		} else if (act.equals("Add")) {
-			path = "/index.html";
-		}
-		
-		 */
 	}
 
 }
