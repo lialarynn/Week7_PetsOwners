@@ -60,6 +60,9 @@ public class NavigationServlet extends HttpServlet {
 				Integer tempId = Integer.parseInt(request.getParameter("petId"));
 				Pets petToEdit = ph.searchPetByID(tempId);
 				request.setAttribute("petToEdit", petToEdit);
+				request.setAttribute("month", petToEdit.getBirthday().getMonthValue());
+				request.setAttribute("date", petToEdit.getBirthday().getDayOfMonth());
+				request.setAttribute("year", petToEdit.getBirthday().getYear());
 				path = "/edit-pet.jsp";
 			} catch (NumberFormatException e) {
 				System.out.println("Forgot to select Pet");

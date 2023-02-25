@@ -20,8 +20,8 @@ public class Pets {
 	private int petId;
 	private String name;
 	private LocalDate birthday;
-	private float weight;
-	private String gender;
+	private String species;
+	private String breed;
 	/**
 	 * 
 	 */
@@ -31,15 +31,15 @@ public class Pets {
 	/**
 	 * @param name
 	 * @param birthday
-	 * @param weight
-	 * @param gender
+	 * @param species
+	 * @param breed
 	 */
-	public Pets(String name, LocalDate birthday, float weight, String gender) {
+	public Pets(String name, LocalDate birthday, String species, String breed) {
 		super();
 		setName(name);
 		setBirthday(birthday);
-		setWeight(weight);
-		setGender(gender);
+		setSpecies(species);
+		setBreed(breed);
 	}
 	/**
 	 * @return the petId
@@ -78,33 +78,33 @@ public class Pets {
 		this.birthday = birthday;
 	}
 	/**
-	 * @return the weight
+	 * @return the species
 	 */
-	public float getWeight() {
-		return weight;
+	public String getSpecies() {
+		return species;
 	}
 	/**
-	 * @param weight the weight to set
+	 * @param species the species to set
 	 */
-	public void setWeight(float weight) {
-		this.weight = weight;
+	public void setSpecies(String species) {
+		this.species = species;
 	}
 	/**
-	 * @return the gender
+	 * @return the breed
 	 */
-	public String getGender() {
-		return gender;
+	public String getBreed() {
+		return breed;
 	}
 	/**
-	 * @param gender the gender to set
+	 * @param breed the breed to set
 	 */
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setBreed(String breed) {
+		this.breed = breed;
 	}
 	@Override
 	public String toString() {
-		return "Pet [petId=" + petId + ", name=" + name + ", birthday=" + birthday + ", weight=" + weight + ", gender="
-				+ gender + "]";
+		return "Pet [petId=" + petId + ", name=" + name + ", birthday=" + birthday + ", species=" + species + ", breed="
+				+ breed + "]";
 	}
 	
 	

@@ -52,8 +52,8 @@ public class EditPetServlet extends HttpServlet {
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		String year = request.getParameter("year");
-		Integer weight = Integer.parseInt(request.getParameter("weight"));
-		String gender = request.getParameter("gender");
+		String species = request.getParameter("species");
+		String breed = request.getParameter("breed");
 		
 		// edit date
 		LocalDate newLd;
@@ -69,8 +69,8 @@ public class EditPetServlet extends HttpServlet {
 		Pets petToUpdate = ph.searchPetByID(petId);
 		petToUpdate.setName(name);
 		petToUpdate.setBirthday(newLd);
-		petToUpdate.setWeight(weight);
-		petToUpdate.setGender(gender);
+		petToUpdate.setSpecies(species);
+		petToUpdate.setBreed(breed);
 		ph.updatePet(petToUpdate);
 		
 		// direct traffic

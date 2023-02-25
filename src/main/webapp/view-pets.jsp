@@ -16,8 +16,8 @@
 					<td><input type="radio" name="petId" value="${currentpet.petId}"></td>
 					<td>${currentpet.name} | </td>
 					<td>${currentpet.birthday} | </td>
-					<td>${currentpet.weight} | </td>
-					<td>${currentpet.gender} | </td>
+					<td>${currentpet.species} | </td>
+					<td>${currentpet.breed} | </td>
 				</tr>
 			</c:forEach>
 		</table>

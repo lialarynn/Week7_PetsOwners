@@ -39,8 +39,8 @@ public class AddPetServlet extends HttpServlet {
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		String year = request.getParameter("year");
-		Float weight = Float.parseFloat(request.getParameter("weight"));
-		String gender = request.getParameter("gender");
+		String species = request.getParameter("species");
+		String breed = request.getParameter("breed");
 		
 		LocalDate birthday;
 		// edit inputs
@@ -53,7 +53,7 @@ public class AddPetServlet extends HttpServlet {
 		}
 		
 		// create pet and insert into database
-		Pets pet = new Pets(name, birthday, weight, gender);
+		Pets pet = new Pets(name, birthday, species, breed);
 		ph.insertPets(pet);
 		 
 		//go back to the add page
