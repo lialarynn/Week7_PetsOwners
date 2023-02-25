@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add a new Pet</title>
+</head>
+<body>
+	<form action="addPetServlet" method="post">
+		Congratulations on your new pet!  Please enter the following information below: <br />
+		 	Pet's Name: <input type="text" name="name"> <br />
+			Birthday: 	<input type="text" name="month" placeholder="mm" size="4"> 
+						<input type="text" name="day" placeholder="dd"	size="4">
+						<input type="text" name="year" placeholder="yyyy" size="4"> <br />
+			Weight: 	<input type="number" name="weight" step="any" /> <br />
+			
+			<label for="gender">Gender:</label>
+ 				<select name="gender" id="gender">
+			 		<option value="male">Male</option>
+			 		<option value="female">Female</option>
+ 				</select>
+						<input type="submit" value="Add Pet">
+	</form> <br/>
+	<a href="viewAllPetsServlet">View list of all Client's pets</a> <br/>
+</body>
+</html>
