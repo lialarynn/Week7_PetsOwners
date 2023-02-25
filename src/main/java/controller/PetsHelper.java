@@ -5,6 +5,8 @@
  */
 package controller;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,5 +23,15 @@ static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("
 		em.getTransaction().commit();
 		em.close();
 		System.out.println("Pet has been added");
+	}
+
+	/**
+	 * @return
+	 */
+	public List<Pets> showAllPets() {
+		EntityManager em = emfactory.createEntityManager();
+		List<Pets> allPets = em.createQuery("SELECT p FROM Pets p").getResultList();
+		System.out.println(allPets.size() + " pets have been found.");
+		return allPets;
 	}
 }

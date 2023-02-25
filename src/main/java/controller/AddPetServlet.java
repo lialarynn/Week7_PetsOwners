@@ -57,7 +57,7 @@ public class AddPetServlet extends HttpServlet {
 		ph.insertPets(pet);
 		 
 		//go back to the add page
-		getServletContext().getRequestDispatcher("/addPet.html").forward(request,response);
+		getServletContext().getRequestDispatcher("/add-pet.html").forward(request,response);
 	}
 
 }
