@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Owners;
 import model.Pets;
 
 
@@ -45,6 +48,7 @@ public class EditPetServlet extends HttpServlet {
 		
 		// add helpers
 		PetsHelper ph = new PetsHelper();
+		OwnersHelper oh = new OwnersHelper();
 				
 		// read inputs
 		Integer petId = Integer.parseInt(request.getParameter("petId"));
@@ -71,6 +75,23 @@ public class EditPetServlet extends HttpServlet {
 		petToUpdate.setBirthday(newLd);
 		petToUpdate.setSpecies(species);
 		petToUpdate.setBreed(breed);
+		try {
+			//owners are selected in list to add
+			String[] selectedOwners = request.getParameterValues("allOwnersToAdd");
+			List<Owners> selectedOwnersInList = new ArrayList<Owners>();
+			
+			for (int i = 0; i < selectedOwners.length; i++) {
+				System.out.println(selectedOwners[i]);
+				Owners o = oh.searchOwnerByID(Integer.parseInt(selectedOwners[i]));
+				selectedOwnersInList.add(o);
+			}
+			
+			petToUpdate.setListOfOwners(selectedOwnersInList);
+		} catch (NullPointerException ex) {
+			//no items selected in list - set to an empty list
+			List<Owners> selectedItemsInList = new ArrayList<Owners>();
+			petToUpdate.setListOfOwners(selectedItemsInList);
+		}
 		ph.updatePet(petToUpdate);
 		
 		// direct traffic

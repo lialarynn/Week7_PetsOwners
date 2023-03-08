@@ -6,10 +6,14 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +26,8 @@ public class Pets {
 	private LocalDate birthday;
 	private String species;
 	private String breed;
+	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
+	private List<Owners> listOfOwners;
 	/**
 	 * 
 	 */
@@ -101,11 +107,22 @@ public class Pets {
 	public void setBreed(String breed) {
 		this.breed = breed;
 	}
+	/**
+	 * @return the listOfOwners
+	 */
+	public List<Owners> getListOfOwners() {
+		return listOfOwners;
+	}
+	/**
+	 * @param listOfOwners the listOfOwners to set
+	 */
+	public void setListOfOwners(List<Owners> listOfOwners) {
+		this.listOfOwners = listOfOwners;
+	}
 	@Override
 	public String toString() {
-		return "Pet [petId=" + petId + ", name=" + name + ", birthday=" + birthday + ", species=" + species + ", breed="
-				+ breed + "]";
+		return "Pets [petId=" + petId + ", name=" + name + ", birthday=" + birthday + ", species=" + species
+				+ ", breed=" + breed + ", listOfOwners=" + listOfOwners + "]";
 	}
-	
 	
 }

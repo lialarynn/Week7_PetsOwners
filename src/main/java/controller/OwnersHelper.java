@@ -76,4 +76,14 @@ static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("
 		em.close();
 		System.out.println(ownerToUpdate.getName() + " has been updated.");
 	}
+
+	/**
+	 * @return
+	 */
+	public List<Owners> getOwners() {
+		EntityManager em = emfactory.createEntityManager();
+		List<Owners> allOwners = em.createQuery("SELECT o FROM Owners o").getResultList();
+		return allOwners;
+		
+	}
 }

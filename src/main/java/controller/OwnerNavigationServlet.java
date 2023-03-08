@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Pets;
+import model.Owners;
 
 /**
- * Servlet implementation class NavigationServlet
+ * Servlet implementation class OwnerNavigationServlet
  */
-@WebServlet("/navigationServlet")
-public class NavigationServlet extends HttpServlet {
+@WebServlet("/ownerNavigationServlet")
+public class OwnerNavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NavigationServlet() {
+    public OwnerNavigationServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,34 +38,36 @@ public class NavigationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 		// add helpers
-		PetsHelper ph = new PetsHelper();
+		OwnersHelper oh = new OwnersHelper();
 		
 		// read inputs
-		String act = request.getParameter("doThisToPets");
+		String act = request.getParameter("doThisToOwners");
 		
 		// determine next steps
-		String path = "/viewAllPetsServlet";
+		String path = "/viewAllOwnersServlet";
 		if(act.equals("Add")) {
-			path = "add-pet.html";
+			path = "/add-owner.html";
 		} else if (act.equals("Delete")) {
 			try {
-				Integer tempId = Integer.parseInt(request.getParameter("petId"));
-				Pets petToDelete = ph.searchPetByID(tempId);
-				ph.deletePet(petToDelete);
+				Integer tempId = Integer.parseInt(request.getParameter("ownerId"));
+				Owners ownerToDelete = oh.searchOwnerByID(tempId);
+				oh.deleteOwner(ownerToDelete);
 			} catch (NumberFormatException e) {
-				System.out.println("Forgot to select Pet");
+				System.out.println("Forgot to select Owner");
 			}
 		} else if (act.equals("Edit")) {
 			try {
-				Integer tempId = Integer.parseInt(request.getParameter("petId"));
-				Pets petToEdit = ph.searchPetByID(tempId);
-				request.setAttribute("petToEdit", petToEdit);
-				request.setAttribute("month", petToEdit.getBirthday().getMonthValue());
-				request.setAttribute("date", petToEdit.getBirthday().getDayOfMonth());
-				request.setAttribute("year", petToEdit.getBirthday().getYear());
-				path = "/edit-pet.jsp";
+				Integer tempId = Integer.parseInt(request.getParameter("ownerId"));
+				Owners ownerToEdit = oh.searchOwnerByID(tempId);
+				System.out.print(ownerToEdit);
+				request.setAttribute("ownerToEdit", ownerToEdit);
+				System.out.print("requested");
+				request.setAttribute("month", ownerToEdit.getBirthday().getMonthValue());
+				request.setAttribute("date", ownerToEdit.getBirthday().getDayOfMonth());
+				request.setAttribute("year", ownerToEdit.getBirthday().getYear());
+				path = "/edit-owner.jsp";
 			} catch (NumberFormatException e) {
-				System.out.println("Forgot to select Pet");
+				System.out.println("Forgot to select Owner");
 			}
 		}
 		

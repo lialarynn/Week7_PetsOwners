@@ -19,7 +19,14 @@
 						<input type="text" name="year" placeholder="yyyy" size="4" value="${year}"> <br />
 			Species: 	<input type="text" name="species" value="${petToEdit.species}"> <br />
 			Breed:		<input type="text" name="breed" value="${petToEdit.breed}"> <br />
-						<input type="submit" value="Update Pet">
+						
+			Available Owners:<br />
+						<select name="allOwnersToAdd" multiple size="6">
+							<c:forEach items="${requestScope.allOwners}" var="currentOwner">
+								<option value = "${currentOwner.ownerId}">${currentOwner.name}</option>
+							</c:forEach>
+						</select> <br />
+						<input type="submit" value="Update Pet"> 
 	</form> <br/>
 </body>
 </html>

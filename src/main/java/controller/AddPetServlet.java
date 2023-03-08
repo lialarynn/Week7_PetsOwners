@@ -55,7 +55,7 @@ public class AddPetServlet extends HttpServlet {
 		// create pet and insert into database
 		Pets pet = new Pets(name, birthday, species, breed);
 		ph.insertPets(pet);
-		 
+		
 		//go back to the add page
 		getServletContext().getRequestDispatcher("/add-pet.html").forward(request,response);
 	}

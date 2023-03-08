@@ -8,12 +8,12 @@
 <title>List of all owners</title>
 </head>
 <body>
-	<form method="post" action="navigationServlet">
+	<form method="post" action="ownerNavigationServlet">
 		List of all owners
 		<table>
 			<c:forEach items="${requestScope.allOwners}" var="currentowner">
 				<tr>
-					<td><input type="radio" name="petId" value="${currentowner.ownerId}"></td>
+					<td><input type="radio" name="ownerId" value="${currentowner.ownerId}"></td>
 					<td>${currentowner.name} | </td>
 					<td>${currentowner.birthday} | </td>
 				</tr>
@@ -24,5 +24,7 @@
 		<input type="submit" value="Add" name="doThisToOwners">
 		<br/>
 	</form>
+	<a href="viewAllOwnersServlet">View list of all owners</a> <br/>
+	<a href="viewAllPetsServlet">View list of all pets</a> <br/>
 </body>
 </html>

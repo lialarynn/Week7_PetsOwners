@@ -17,6 +17,7 @@
 			Your birthday: 	<input type="text" name="month" placeholder="mm" size="4" value="${month}">  
 						<input type="text" name="day" placeholder="dd" size="4" value="${date}">
 						<input type="text" name="year" placeholder="yyyy" size="4" value="${year}"> <br />
+						<input type="submit" value="Update Owner"> <!--Julie added-->
 	</form> <br/>
 </body>
 </html>

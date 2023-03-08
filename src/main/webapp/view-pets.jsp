@@ -8,7 +8,7 @@
 <title>List of all pets</title>
 </head>
 <body>
-	<form method="post" action="navigationServlet">
+	<form method="post" action="petNavigationServlet">
 		List of all pets
 		<table>
 			<c:forEach items="${requestScope.allPets}" var="currentpet">
@@ -26,5 +26,7 @@
 		<input type="submit" value="Add" name="doThisToPets">
 		<br/>
 	</form>
+	<a href="viewAllOwnersServlet">View list of all owners</a> <br/>
+	<a href="viewAllPetsServlet">View list of all pets</a> <br/>
 </body>
 </html>
